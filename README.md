@@ -1,4 +1,4 @@
-# golang demo with Mongodb
+# Golang demo with Mongodb
 
 In the project directory, you can run:
 
@@ -8,4 +8,4 @@ In the project directory, you can run:
 - /people - To get all people
 - /people/{id} (POST) - To enter person 
 - /people/{id} (GET) - To get person 
-- /people/{id} (DE:ETE) - To delete person 
+- /people/{id} (DELETE) - To delete person 
