@@ -59,7 +59,7 @@ func DeletePersonEndPoint(w http.ResponseWriter, req *http.Request){
     
 }
 func main() {
-    session, err := mgo.Dial("mongodb://HimaniTH1:HimaniTH1@ds161224.mlab.com:61224/vidly")
+    session, err := mgo.Dial("databasestring")
 	if err != nil {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
