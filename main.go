@@ -6,7 +6,6 @@ import (
     "net/http"
     "gopkg.in/mgo.v2"
     "gopkg.in/mgo.v2/bson"
-    "fmt"
 )
 
 type Person struct{
@@ -32,8 +31,7 @@ func GetPersonEndPoint(w http.ResponseWriter, req *http.Request){
     res := Person{}
     params := mux.Vars(req)
     id := params["id"]
-    collection().Find(bson.M{"id": id}).One(&res);
-    fmt.Println("ff", res)    
+    collection().Find(bson.M{"id": id}).One(&res);  
     json.NewEncoder(w).Encode(res)
 
 }
@@ -49,8 +47,7 @@ func CreatePersonEndPoint(w http.ResponseWriter, req *http.Request){
     lastname := req.FormValue("lastname")
     city := req.FormValue("city")
     state := req.FormValue("state")
-    item := Person{ID: id, Firstname: firstname, Lastname: lastname, Address: &Address{City: city, State:state}}
-    fmt.Println("ff", item)    
+    item := Person{ID: id, Firstname: firstname, Lastname: lastname, Address: &Address{City: city, State:state}} 
     collection().Insert(item)
     w.Write([]byte("OK"))
 }
@@ -73,5 +70,5 @@ func main() {
     router.HandleFunc("/people/{id}", GetPersonEndPoint).Methods("GET")
     router.HandleFunc("/people/{id}", CreatePersonEndPoint).Methods("POST")
     router.HandleFunc("/people/{id}", DeletePersonEndPoint).Methods("DELETE")
-    log.Fatal(http.ListenAndServe(":12345", router))
+    log.Fatal(http.ListenAndServe(":3000", router))
 }
